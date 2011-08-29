@@ -1,0 +1,13 @@
+
+p
+	label(for='thread_title') Title
+p
+	input(type='text', id='thread_title', name='thread[title]', value=thread.title)
+
+p
+	label(for='thread_body') Text
+p
+	textarea(id='thread_body', name='thread[body]')= thread.body
+
+p
+	input(type='submit')

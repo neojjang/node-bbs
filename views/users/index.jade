@@ -1,0 +1,5 @@
+h2= title
+ul#users
+	- each user in users
+		li 
+			a(href='/user/#{user._id}') #{user.name}

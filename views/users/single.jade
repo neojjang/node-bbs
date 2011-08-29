@@ -1,0 +1,21 @@
+h2 #{title}
+- if (session.user)
+	- if (session.user._id == user._id)
+		a(href='/user/'+session.user._id+'/edit') Edit Profile
+
+p
+	b Role: 
+	#{user.role}
+p
+	b User Since: 
+	#{user.created}
+p
+	b Email: 
+	#{user.email}
+p
+	b Threads: 
+	#{user.threads}
+p
+	b Replies: 
+	#{user.replies}
+

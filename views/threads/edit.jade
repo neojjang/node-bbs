@@ -1,0 +1,6 @@
+h2 Edit Thread "#{thread.title}"
+
+form(action='/thread/#{thread.id}', method='POST')
+	input(type='hidden', name='_method', value='PUT')
+	div!= partial('threads/form')
+	a(href='/thread/#{thread.id}') Cancel

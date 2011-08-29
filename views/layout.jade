@@ -1,0 +1,67 @@
+!!!
+html
+	head
+		title NEB > #{title}
+		link(rel='stylesheet', href='/stylesheets/main.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Arvo', type='text/css')
+
+	body
+		#header
+			header
+				h1 NODE.JS EXPERIMENTAL BBS
+			nav
+				.left
+					ul
+						li
+							a(href='/') Home
+						li
+							a(href='/threads') Threads
+						li
+							a(href='/users') Users
+				.right
+					ul
+					- if (isUser)
+						li
+							span#u= session.user.name
+						li
+							a(href='/user/#{session.user._id}') Profile
+						li
+							a(href='/logout') Logout
+					- else
+						li
+							a(href='/login?redir=#{url}') Login
+						li
+							a(href='/register') Register
+		
+		#container
+		
+			- if (flash.warn)
+				.warn= flash.warn
+					a.right(href='javascript:closebox();')[x]
+			- if (flash.info)
+				.info= flash.info
+					a.right(href='javascript:closebox();')[x]
+
+			div!= body
+		
+		footer 
+			\ Powered by 
+			a(href='http://archlinux.org', target="_blank") arch
+			\, 
+			a(href='http://nodejs.org', target="_blank") node.js
+			\, 
+			a(href='http://expressjs.com', target="_blank") express
+			\, 
+			a(href='http://mongodb.org', target="_blank") mongodb
+			\, 
+			a(href='http://jashkenas.github.com/coffee-script/', target="_blank") coffeescript
+			\, 
+			a(href='http://jade.lang.com', target="_blank") jade
+			\, 
+			a(href='http://learnboost.github.com/stylus/', target="_blank") stylus
+			
+			
+			
+			
+			
+			

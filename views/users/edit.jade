@@ -1,0 +1,6 @@
+h2 #{title}
+
+form(action='/user/'+user._id, method='POST')
+	input(type='hidden', name='_method', value='PUT')
+	div!= partial('users/form', {user: user})
+	a(href='/user/'+user._id) Cancel

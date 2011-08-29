@@ -1,0 +1,47 @@
+h2 #{thread.title} by 
+	a(href='/user/#{thread.uid}') #{thread.uname}
+
+- if (isAdmin || isMod)
+	a.red(href='/thread/#{thread.id}/edit') Edit Thread
+	&nbsp; |
+	a.red(href='/thread/#{thread.id}/delete') Delete Thread
+
+#threads
+	.box
+		.main
+			b #{thread.body}
+
+	- each reply in thread.replies
+		.box
+			.meta
+				span.left
+					\ At #{reply.created.toLocaleTimeString()},
+					a.bold(href='/user/#{reply.uid}')#{reply.uname}
+					\ replied with:
+				span.right
+					a(href='javascript:quote("#{reply._id}");') Quote
+					- if (isAdmin || isMod)
+						\ | 
+						a.red(href='/thread/#{thread.id}/reply/#{reply._id}/edit') Edit
+						\ | 
+						a.red(href='/thread/#{thread.id}/reply/#{reply._id}/delete') Delete
+			.main= reply.body
+
+
+
+- if (isUser)
+	h2 New Reply
+	form(action='/thread/#{thread.id}/replies', method='POST')
+		p
+			textarea(id='reply', name='reply')
+		p
+			input(type='submit')
+- else
+	p
+		a(href='/login?redir=#{url}') Login
+		\ or register to reply.
+
+
+
+
+

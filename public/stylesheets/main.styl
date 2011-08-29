@@ -1,0 +1,146 @@
+
+@import 'colours'
+@import 'useful'
+@import 'table'
+
+
+msg-box(n)
+	padding n
+	border-radius n
+
+
+
+
+
+body
+	margin 0
+	padding 0
+	background $bg
+	color dark-grey
+	font 14px Georgia, serif
+	
+
+a
+	color $txt-link
+
+a:hover
+	color $txt-light
+	text-decoration none
+
+h1
+	margin 0
+	font-family 'Arvo'
+	font-size 36px
+
+h2
+	font-family 'Arvo'
+	font-size 24px
+
+ul
+	list-style-type none
+	padding 0
+
+li
+	display inline
+
+
+#header
+	position relative
+	width 100%
+	background $bg-offwhite
+	border-bottom 1px solid $bg-light
+
+header
+	width 900px
+	margin 0 auto
+	padding 20px 0
+
+nav
+	width 900px
+	height 20px
+	margin 0 auto
+	padding 5px 0
+
+nav #u
+	font-weight bold
+
+nav ul
+	list-style-type none
+	padding 0
+	margin 0
+
+nav li
+	display inline
+	padding 10px
+
+
+#container
+	width 900px
+	margin 0 auto
+
+
+.box
+	position relative
+	border 1px solid $bg-medium
+	margin 20px 0
+
+.box:hover
+	box-shadow 0 0 5px $txt-link
+	
+
+.box:before
+	content " "
+	position absolute
+	z-index -1
+	top -5px
+	left -5px
+	right -5px
+	bottom -5px
+	border 5px solid #F8F8F8
+
+
+
+
+
+
+.box .meta
+	height 1em
+	background #F8F8F8
+	border-bottom 1px solid $bg-light
+	padding 10px
+	color #888
+	font-size 0.8em
+
+.box .main
+	background $bg
+	padding 10px
+
+
+.warn
+	background #FFABAB
+	padding 10px
+	font-weight bold
+	box-shadow 0 0 15px #AAA
+	border-radius-bottom 4px
+
+.info
+	background #FFF09D
+	padding 10px
+	font-weight bold
+	box-shadow 0 0 15px #AAA
+	border-radius-bottom 4px
+
+
+
+footer
+	width 900px
+	margin 0 auto
+	padding 5px 0
+	text-align center
+	color $txt-light
+	font 0.8em sans-serif
+
+footer a
+	color $txt-light
+
+

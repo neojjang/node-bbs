@@ -1,0 +1,14 @@
+h2= title
+form(action='/login', method='POST')
+	input(type='hidden', name='redir', value=redir)
+
+	p
+		label(for='name') Username:
+		input(type='text', name='name', id='name')
+
+	p
+		label(for='pass') Password:
+		input(type='password', name='pass', id='pass')
+
+	p
+		input(type='submit')

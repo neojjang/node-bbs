@@ -1,0 +1,5 @@
+h2 Edit Reply
+
+form(action='/thread/'+thread._id+'/reply/'+reply._id, method='POST')
+	input(type='hidden', name='_method', value='PUT')
+	div!= partial('replies/form', {thread: thread, reply: reply})
