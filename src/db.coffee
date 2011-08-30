@@ -2,24 +2,27 @@ mongoose = require 'mongoose'
 
 mongoose.connect 'mongodb://jrdx:K0nv1cted@staff.mongohq.com:10029/database'
 
-Schema	= mongoose.Schema
-ObjId = Schema.ObjectId
+mongooseTypes = require 'mongoose-types'
+mongooseTypes.loadTypes mongoose
 
 
-UserSchema = new Schema
-	created:
-		type: Date
-		default: Date.now
-		
+Schema			= mongoose.Schema
+ObjId 			= Schema.ObjectId
+Email				= mongoose.SchemaTypes.Email
+useTimestamps 	= mongooseTypes.useTimestamps
+
+UserSchema = new Schema		
 	name:
 		type: String
 		unique: true
 		min: 5
 		max: 32
+		lowercase: true
 		
 	email:
-		type: String
+		type: Email
 		unique: true
+		lowercase: true
 		
 	role:
 		type: String
@@ -37,15 +40,20 @@ UserSchema = new Schema
 	replies:
 		type: Number
 		default: 0
+		
+	logins:
+		type: Number
+		default: 0
+		
+	lastLogin:
+		type: Date
+		default: Date.now
 
+UserSchema.plugin useTimestamps
 
 ReplySchema = new Schema
 	id:
 		type: Number
-		
-	created:
-		type: Date
-		default: Date.now
 		
 	uid:
 		type: ObjId
@@ -58,12 +66,9 @@ ReplySchema = new Schema
 	body:
 		type: String
 
+ReplySchema.plugin useTimestamps
 
 ThreadSchema = new Schema
-	created:
-		type: Date
-		default: Date.now
-		
 	title:
 		type: String
 		max: 70
@@ -92,34 +97,26 @@ ThreadSchema = new Schema
 			'modprivate'
 		]
 		
-	bump:
-		type: Date
-		default: Date.now
-		
 	views:
-		type: Number
-		default: 0
-		
-	repliesnum:
 		type: Number
 		default: 0
 		
 	replies:
 		[ReplySchema]
 
+ThreadSchema.plugin useTimestamps
 
 TagSchema = new Schema
-	created:
-		type: Date
-		default: Date.now
-		
 	name:
 		type: String
 		max: 32
+		lowercase: true
 		
 	uid:
 		type: ObjId
 		ref: 'User'
+
+TagSchema.plugin useTimestamps
 
 
 

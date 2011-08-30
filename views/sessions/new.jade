@@ -1,14 +1,18 @@
 h2= title
 form(action='/login', method='POST')
 	input(type='hidden', name='redir', value=redir)
-
-	p
-		label(for='name') Username:
-		input(type='text', name='name', id='name')
-
-	p
-		label(for='pass') Password:
-		input(type='password', name='pass', id='pass')
-
-	p
-		input(type='submit')
+	table.formtable
+		tr
+			td
+				label(for='name') Username:
+			td
+				input(type='text', name='name', id='name')
+		tr
+			td
+				label(for='pass') Password:
+			td
+				input(type='password', name='pass', id='pass')
+		tr
+			td(colspan='2')
+				button#cancelbtn(type='button') Cancel
+				input(type='submit')

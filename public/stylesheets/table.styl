@@ -1,6 +1,15 @@
 @import 'colours'
 
-table:before
+
+table
+	border-collapse collapse
+
+td
+	padding 5px
+
+
+
+table.grid:before, table.vgrid:before
 	content " "
 	position absolute
 	z-index -1
@@ -10,31 +19,64 @@ table:before
 	bottom -5px
 	border 5px solid $bg-offwhite
 
-table
+table.grid
 	position relative
 	border-collapse collapse
 	border 1px solid $bg-medium
 	width: 900px
 
-tr:nth-child(2n)
+table.grid tr:nth-child(2n)
 	background $bg
 
-tr:nth-child(2n+1)
+table.grid tr:nth-child(2n+1)
 	background $bg-offwhite
 
-thead tr:nth-child(1), tfoot tr:nth-child(1)
+table.grid thead tr:nth-child(1), table.grid tfoot tr:nth-child(1)
 	background $bg-light
 	color $txt-dark
 	font-weight bold
 
-
-td
+table.grid td
 	padding 10px
 
-
-thead
+table.grid thead
 	border-bottom 1px solid $bg-medium
 
-tfoot
+table.grid tfoot
 	font-size: 0.8em
 	border-top 1px solid $bg-medium
+
+
+
+
+table.vgrid
+	position relative
+	border-collapse collapse
+	border-left 1px solid $bg-medium
+	border-right 1px solid $bg-medium
+	border-bottom 1px solid $bg-medium
+
+table.vgrid tr:nth-child(2n)
+	background $bg
+
+table.vgrid tr:nth-child(2n+1)
+	background $bg-offwhite
+
+table.vgrid td:first-child
+	background $bg-light
+	color $txt-dark
+	font-weight bold
+	text-align right
+
+table.vgrid td
+	padding 10px
+
+table.vgrid tr:first-child
+	border-top 1px solid $bg-medium
+
+
+
+
+table.formtable td:first-child
+	text-align right
+

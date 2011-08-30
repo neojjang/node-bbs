@@ -1,5 +1,13 @@
 h2= title
-ul#users
+table.grid
+	thead
+		td Username
+		td Email
+		td User Since
+	tbody
 	- each user in users
-		li 
-			a(href='/user/#{user._id}') #{user.name}
+		tr
+			td
+				a(href='/user/#{user._id}') #{user.name}
+			td= user.email
+			td.date(date=user.createdAt)

@@ -2,9 +2,9 @@ h2 #{thread.title} by
 	a(href='/user/#{thread.uid}') #{thread.uname}
 
 p Created 
-	span.date(date=thread.created)
+	span.date(date=thread.createdAt)
 	\. Now with 
-	span.b= thread.repliesnum
+	span.b= thread.replies.length
 	\ replies and 
 	span.b= thread.views
 	\ views.
@@ -18,7 +18,7 @@ p Created
 		.meta
 			span.left
 				span.bold #0.
-				\ At #{thread.created.toLocaleTimeString()},
+				\ At #{thread.createdAt.toLocaleTimeString()},
 				a.bold(href='/user/#{thread.uid}')#{thread.uname}
 				\ started the thread with:
 			span.right
@@ -32,7 +32,7 @@ p Created
 			.meta
 				span.left
 					span.bold ##{reply.id}.
-					\ At #{reply.created.toLocaleTimeString()},
+					\ At #{reply.createdAt.toLocaleTimeString()},
 					a.bold(href='/user/#{reply.uid}')#{reply.uname}
 					\ replied with:
 				span.right
@@ -50,10 +50,13 @@ p Created
 - if (isUser)
 	h2 New Reply
 	form(action='/thread/#{thread.id}/replies', method='POST')
-		p
-			textarea(id='reply', name='reply')
-		p
-			input(type='submit')
+		table.formtable
+			tr
+				td
+					textarea(id='reply', name='reply')
+			tr
+				td
+					input(type='submit')
 - else
 	p
 		a(href='/login?redir=#{url}') Login

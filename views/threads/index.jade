@@ -1,5 +1,5 @@
 h2= title
-table
+table.grid
 	thead
 		tr
 			td Subject
@@ -7,7 +7,7 @@ table
 			td Replies
 			td Views
 			td Created
-			td Last Bump
+			td Last Change
 			td
 	tbody
 		- if (threads.length > 0)
@@ -17,10 +17,10 @@ table
 						a(href='/thread/#{thread.id}') #{thread.title} 
 					td
 						a(href='/user/#{thread.uid}') #{thread.uname}
-					td= thread.repliesnum
+					td= thread.replies.length
 					td= thread.views
-					td.date(date=thread.created)
-					td.date(date=thread.bump)
+					td.date(date=thread.createdAt)
+					td.date(date=thread.updatedAt)
 					td.right
 						- if (isAdmin || isMod)
 							a.red(href='/thread/#{thread.id}/edit') Edit Thread

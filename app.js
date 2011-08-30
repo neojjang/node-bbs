@@ -87,6 +87,7 @@
   app.post('/thread/:tid/replies', mw.isUser, reply.create);
   app.get('/thread/:tid/reply/:id/edit', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.edit);
   app.put('/thread/:tid/reply/:id', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.update);
+  app.get('/thread/:tid/reply/:id/delete', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.destroy);
   app.listen(process.env.PORT || 3000);
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 }).call(this);

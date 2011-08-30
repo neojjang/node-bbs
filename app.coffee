@@ -1,10 +1,12 @@
 
 
-# External lib
+# External modules
 express	= 	require 'express'
 
 
-# Internal lib
+
+
+# Internal modules
 mw			=	require './lib/middleware'
 db			=	require './lib/db'
 site		=	require './lib/site'
@@ -100,6 +102,7 @@ app.get '/thread/:id/delete', mw.isUser, mw.restrictToRoles(['mod', 'admin']), t
 app.post '/thread/:tid/replies', mw.isUser, reply.create
 app.get '/thread/:tid/reply/:id/edit', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.edit
 app.put '/thread/:tid/reply/:id', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.update
+app.get '/thread/:tid/reply/:id/delete', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.destroy
 
 # Server Startup
 

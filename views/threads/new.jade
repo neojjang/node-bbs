@@ -1,4 +1,17 @@
 h2= title
 form(action='/threads', method='POST')
-	div!= partial('threads/form')
-	a(href='/threads') Cancel
+	table.formtable
+		tr
+			td
+				label(for='thread_title') Title:
+			td
+				input(type='text', id='thread_title', name='thread[title]')
+		tr
+			td
+				label(for='thread_body') Text:
+			td
+				textarea(id='thread_body', name='thread[body]')
+		tr
+				td(colspan='2')
+					button#cancelbtn(type='button') Cancel
+					input(type='submit')

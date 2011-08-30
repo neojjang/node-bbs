@@ -16,7 +16,14 @@
 .min {
   width: 1px;
 }
-table:before {
+table {
+  border-collapse: collapse;
+}
+td {
+  padding: 5px;
+}
+table.grid:before,
+table.vgrid:before {
   content: " ";
   position: absolute;
   z-index: -1;
@@ -26,33 +33,61 @@ table:before {
   bottom: -5px;
   border: 5px solid #f8f8f8;
 }
-table {
+table.grid {
   position: relative;
   border-collapse: collapse;
   border: 1px solid #d7d7d7;
   width: 900px;
 }
-tr:nth-child(2n) {
+table.grid tr:nth-child(2n) {
   background: #fff;
 }
-tr:nth-child(2n+1) {
+table.grid tr:nth-child(2n+1) {
   background: #f8f8f8;
 }
-thead tr:nth-child(1),
-tfoot tr:nth-child(1) {
+table.grid thead tr:nth-child(1),
+table.grid tfoot tr:nth-child(1) {
   background: #eee;
   color: #424242;
   font-weight: bold;
 }
-td {
+table.grid td {
   padding: 10px;
 }
-thead {
+table.grid thead {
   border-bottom: 1px solid #d7d7d7;
 }
-tfoot {
+table.grid tfoot {
   font-size: 0.8em;
   border-top: 1px solid #d7d7d7;
+}
+table.vgrid {
+  position: relative;
+  border-collapse: collapse;
+  border-left: 1px solid #d7d7d7;
+  border-right: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+}
+table.vgrid tr:nth-child(2n) {
+  background: #fff;
+}
+table.vgrid tr:nth-child(2n+1) {
+  background: #f8f8f8;
+}
+table.vgrid td:first-child {
+  background: #eee;
+  color: #424242;
+  font-weight: bold;
+  text-align: right;
+}
+table.vgrid td {
+  padding: 10px;
+}
+table.vgrid tr:first-child {
+  border-top: 1px solid #d7d7d7;
+}
+table.formtable td:first-child {
+  text-align: right;
 }
 body {
   margin: 0;
@@ -170,6 +205,19 @@ nav li {
 }
 .closebox:hover {
   cursor: pointer;
+}
+label {
+  font-size: 1.2em;
+}
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+  border: 1px solid #d7d7d7;
+  background: #f8f8f8;
+  font-size: 1.2em;
+  padding: 5px;
+  min-width: 300px;
 }
 footer {
   width: 900px;
