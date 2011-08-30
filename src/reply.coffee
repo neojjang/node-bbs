@@ -22,7 +22,7 @@ exports.create = (req, res) ->
 			body	:	req.body.reply
 		thread.save (err) ->
 			if err then throw err
-			db.Thread.update { _id: thread._id }, { $inc: { repliesnum: 1 } }, (err) ->
+			db.Thread.update { _id: thread._id }, { $inc: { repliesnum: 1 }, bump: Date() }, (err) ->
 				if err then throw err
 				db.User.update { _id: req.session.user._id }, { $inc: { replies: 1 } }, (err) ->
 					if err then throw err

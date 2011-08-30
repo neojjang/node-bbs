@@ -96,6 +96,10 @@ ThreadSchema = new Schema
 		type: Date
 		default: Date.now
 		
+	views:
+		type: Number
+		default: 0
+		
 	repliesnum:
 		type: Number
 		default: 0

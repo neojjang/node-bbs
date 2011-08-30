@@ -5,6 +5,7 @@ table
 			td Subject
 			td User
 			td Replies
+			td Views
 			td Created
 			td Last Bump
 			td
@@ -17,6 +18,7 @@ table
 					td
 						a(href='/user/#{thread.uid}') #{thread.uname}
 					td= thread.repliesnum
+					td= thread.views
 					td.date(date=thread.created)
 					td.date(date=thread.bump)
 					td.right
@@ -26,9 +28,9 @@ table
 							a.red(href='/thread/#{thread.id}/delete') Delete Thread
 		- else
 			tr
-				td(colspan='6') No Threads Found.
+				td(colspan='7') No Threads Found.
 	tfoot
 		tr
-			td(colspan='6')
+			td(colspan='7')
 				a(href='/threads/new') New Thread
 s

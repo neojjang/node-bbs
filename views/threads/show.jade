@@ -1,26 +1,43 @@
 h2 #{thread.title} by 
 	a(href='/user/#{thread.uid}') #{thread.uname}
 
+p Created 
+	span.date(date=thread.created)
+	\. Now with 
+	span.b= thread.repliesnum
+	\ replies and 
+	span.b= thread.views
+	\ views.
 - if (isAdmin || isMod)
 	a.red(href='/thread/#{thread.id}/edit') Edit Thread
-	&nbsp; |
+	\ |
 	a.red(href='/thread/#{thread.id}/delete') Delete Thread
 
 #threads
 	.box
+		.meta
+			span.left
+				span.bold #0.
+				\ At #{thread.created.toLocaleTimeString()},
+				a.bold(href='/user/#{thread.uid}')#{thread.uname}
+				\ started the thread with:
+			span.right
+				- if (isUser)
+					a(href='javascript:quote("0");') Quote
 		.main
 			b #{thread.body}
 
 	- each reply in thread.replies
-		.box
+		.box(id=reply.id)
 			.meta
 				span.left
+					span.bold ##{reply.id}.
 					\ At #{reply.created.toLocaleTimeString()},
 					a.bold(href='/user/#{reply.uid}')#{reply.uname}
 					\ replied with:
 				span.right
 					- if (isUser)
-						a(href='javascript:quote("#{reply._id}");') Quote
+						a(href='javascript:quote("#{reply.id}");') Quote
 					- if (isAdmin || isMod)
 						\ | 
 						a.red(href='/thread/#{thread.id}/reply/#{reply._id}/edit') Edit

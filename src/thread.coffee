@@ -5,7 +5,7 @@ db = require './db'
 
 
 exports.index = (req, res) ->
-	db.Thread.find({}).sort('date', -1).execFind (err, threads) ->
+	db.Thread.find({}).sort('bump', -1).execFind (err, threads) ->
 		if err then throw err
 		res.render 'threads', { title: 'Threads', threads: threads }
 
@@ -26,9 +26,10 @@ exports.create = (req, res) ->
 			res.redirect '/threads'
 
 exports.show = (req, res) ->
-	db.Thread.findById req.params.id, (err, thread) ->
-		if err then throw err
-		res.render 'threads/show', { title: thread.title, thread: thread }
+	db.Thread.update { _id: req.params.id }, { $inc: { views: 1 } }, () ->
+		db.Thread.findById req.params.id, (err, thread) ->
+			if err then throw err
+			res.render 'threads/show', { title: thread.title, thread: thread }
 
 exports.edit = (req, res) ->
 	db.Thread.findById req.params.id, (err, thread) ->
