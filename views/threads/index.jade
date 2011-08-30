@@ -1,34 +1,34 @@
 h2= title
-
 table
 	thead
-		td Subject
-		td User
-		td Replies
-		td Last Bump
-		td
-	- if (threads.length > 0)
-		- each thread in threads
-			tr
-				td(style='min-width:250px;')
-					a(href='/thread/#{thread.id}') #{thread.title} 
-				td
-					a(href='/user/#{thread.uid}') #{thread.uname}
-				td= thread.repliesnum
-				td #{thread.created.toLocaleTimeString()} #{thread.created.toLocaleDateString()}
-				td.right
-					- if (isAdmin || isMod)
-						a.red(href='/thread/#{thread.id}/edit') Edit Thread
-						&nbsp; |
-						a.red(href='/thread/#{thread.id}/delete') Delete Thread
-	- else
 		tr
-			td(colspan='5') No Threads Found.
+			td Subject
+			td User
+			td Replies
+			td Created
+			td Last Bump
+			td
+	tbody
+		- if (threads.length > 0)
+			- each thread in threads
+				tr
+					td(style='min-width:250px;')
+						a(href='/thread/#{thread.id}') #{thread.title} 
+					td
+						a(href='/user/#{thread.uid}') #{thread.uname}
+					td= thread.repliesnum
+					td.date(date=thread.created)
+					td.date(date=thread.bump)
+					td.right
+						- if (isAdmin || isMod)
+							a.red(href='/thread/#{thread.id}/edit') Edit Thread
+							&nbsp; |
+							a.red(href='/thread/#{thread.id}/delete') Delete Thread
+		- else
+			tr
+				td(colspan='6') No Threads Found.
 	tfoot
-		td
-		td
-		td
-		td
-		td
-p
-	a(href='/threads/new') New Thread
+		tr
+			td(colspan='6')
+				a(href='/threads/new') New Thread
+s

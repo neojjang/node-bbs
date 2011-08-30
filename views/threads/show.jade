@@ -19,7 +19,8 @@ h2 #{thread.title} by
 					a.bold(href='/user/#{reply.uid}')#{reply.uname}
 					\ replied with:
 				span.right
-					a(href='javascript:quote("#{reply._id}");') Quote
+					- if (isUser)
+						a(href='javascript:quote("#{reply._id}");') Quote
 					- if (isAdmin || isMod)
 						\ | 
 						a.red(href='/thread/#{thread.id}/reply/#{reply._id}/edit') Edit

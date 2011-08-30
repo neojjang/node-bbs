@@ -84,8 +84,8 @@ nav li
 	border 1px solid $bg-medium
 	margin 20px 0
 
-.box:hover
-	box-shadow 0 0 5px $txt-link
+//.box:hover
+//	box-shadow 0 0 5px $txt-link
 	
 
 .box:before
@@ -96,16 +96,11 @@ nav li
 	left -5px
 	right -5px
 	bottom -5px
-	border 5px solid #F8F8F8
-
-
-
-
-
+	border 5px solid $bg-offwhite
 
 .box .meta
 	height 1em
-	background #F8F8F8
+	background $bg-offwhite
 	border-bottom 1px solid $bg-light
 	padding 10px
 	color #888
@@ -130,12 +125,13 @@ nav li
 	box-shadow 0 0 15px #AAA
 	border-radius-bottom 4px
 
-
+.closebox:hover
+	cursor pointer
 
 footer
 	width 900px
 	margin 0 auto
-	padding 5px 0
+	padding 20px 0
 	text-align center
 	color $txt-light
 	font 0.8em sans-serif

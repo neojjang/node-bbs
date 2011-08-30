@@ -5,7 +5,7 @@ db = require './db'
 
 
 exports.index = (req, res) ->
-	db.Thread.find {}, (err, threads) ->
+	db.Thread.find({}).sort('date', -1).execFind (err, threads) ->
 		if err then throw err
 		res.render 'threads', { title: 'Threads', threads: threads }
 

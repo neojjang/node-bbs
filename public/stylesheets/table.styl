@@ -1,33 +1,40 @@
 @import 'colours'
 
+table:before
+	content " "
+	position absolute
+	z-index -1
+	top -5px
+	left -5px
+	right -5px
+	bottom -5px
+	border 5px solid $bg-offwhite
+
 table
+	position relative
 	border-collapse collapse
+	border 1px solid $bg-medium
 	width: 900px
 
 tr:nth-child(2n)
-	background $bg-light
+	background $bg
 
 tr:nth-child(2n+1)
 	background $bg-offwhite
 
 thead tr:nth-child(1), tfoot tr:nth-child(1)
-	background $bg-medium
+	background $bg-light
 	color $txt-dark
 	font-weight bold
 
-thead tr td:first-child
-	border-radius-top-left 5px
-
-thead tr td:last-child
-	border-radius-top-right 5px
-
-tfoot tr td:first-child
-	border-radius-bottom-left 5px
-
-tfoot tr td:last-child
-	border-radius-bottom-right 5px
 
 td
 	padding 10px
 
 
+thead
+	border-bottom 1px solid $bg-medium
+
+tfoot
+	font-size: 0.8em
+	border-top 1px solid $bg-medium

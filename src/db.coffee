@@ -88,7 +88,13 @@ ThreadSchema = new Schema
 			'sticky'
 			'modpost'
 			'locked'
+			'private'
+			'modprivate'
 		]
+		
+	bump:
+		type: Date
+		default: Date.now
 		
 	repliesnum:
 		type: Number
