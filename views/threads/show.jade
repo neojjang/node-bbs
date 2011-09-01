@@ -26,23 +26,22 @@ p Created
 					a(href='javascript:quote("0");') Quote
 		.main
 			b #{thread.body}
-
+	- x = 0
 	- each reply in thread.replies
-		.box(id=reply.id)
+		- x++
+		.box(id=x)
 			.meta
 				span.left
-					span.bold ##{reply.id}.
+					span.bold ##{x}.
 					\ At #{reply.createdAt.toLocaleTimeString()},
 					a.bold(href='/user/#{reply.uid}')#{reply.uname}
 					\ replied with:
 				span.right
 					- if (isUser)
-						a(href='javascript:quote("#{reply.id}");') Quote
+						a(href='javascript:quote("#{x}");') Quote
 					- if (isAdmin || isMod)
 						\ | 
 						a.red(href='/thread/#{thread.id}/reply/#{reply._id}/edit') Edit
-						\ | 
-						a.red(href='/thread/#{thread.id}/reply/#{reply._id}/delete') Delete
 			.main= reply.body
 
 

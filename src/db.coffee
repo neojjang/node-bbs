@@ -52,9 +52,6 @@ UserSchema = new Schema
 UserSchema.plugin useTimestamps
 
 ReplySchema = new Schema
-	id:
-		type: Number
-		
 	uid:
 		type: ObjId
 		ref: 'User'

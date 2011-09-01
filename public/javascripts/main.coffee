@@ -25,7 +25,6 @@ $( () ->
 		return
 	
 	
-	
 	setInterval () ->
 		$('.date').prettyDate()
 		return

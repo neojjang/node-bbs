@@ -2,7 +2,7 @@
 
 # External modules
 express	= 	require 'express'
-
+#socketio =	require 'socket.io'
 
 
 
@@ -18,7 +18,8 @@ session	=	require './lib/session'
 
 # Configuration
 
-app = module.exports = express.createServer()
+app 	=	module.exports = express.createServer()
+#io		=	socketio.listen app
 
 app.configure () ->
 	secret = '30d8689332f7091b0b868926502bf690'
@@ -103,6 +104,16 @@ app.post '/thread/:tid/replies', mw.isUser, reply.create
 app.get '/thread/:tid/reply/:id/edit', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.edit
 app.put '/thread/:tid/reply/:id', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.update
 app.get '/thread/:tid/reply/:id/delete', mw.isUser, mw.restrictToRoles(['mod', 'admin']), reply.destroy
+
+
+# Socket.io Setup
+
+#io.sockets.on 'connection', (sock) ->
+#	sock.on 'request', (request) ->
+#		if request.type is 'thread'
+#			thread.api sock, request
+
+
 
 # Server Startup
 

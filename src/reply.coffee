@@ -33,14 +33,14 @@ exports.update = (req, res) ->
 		res.render 'replies/edit', { title: 'Edit Reply', thread: thread, reply: thread.replies.id req.params.id }
 
 
-exports.destroy = (req, res) ->
-	db.Thread.findById req.params.tid, (err, thread) ->
-		if err then throw err
-		reply = thread.replies.id req.params.id
-		reply.remove()
-		thread.save (err) ->
-			if err then throw err
-			res.redirect '/thread/'+thread._id
+#exports.destroy = (req, res) ->
+#	db.Thread.findById req.params.tid, (err, thread) ->
+#		if err then throw err
+#		reply = thread.replies.id req.params.id
+#		reply.remove()
+#		thread.save (err) ->
+#			if err then throw err
+#			res.redirect '/thread/'+thread._id
 
 
 

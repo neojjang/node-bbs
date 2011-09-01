@@ -45,3 +45,6 @@ exports.destroy = (req, res) ->
 		if err then throw err
 		res.redirect '/threads'
 
+
+
+
